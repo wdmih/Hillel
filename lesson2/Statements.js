@@ -1,23 +1,25 @@
-const instructions = ['Back', 'Back', 'Back', 'Back', 'Forward', 'Left', 'Right', 'Right'];
+const instr = ['Back', 'Back', 'Back', 'Back', 'Forward', 'Left', 'Right', 'Right'];
 
-function move(arr) {
-	let coords = [0, 0];
-	console.log('Начало' + '[' + coords + ']');
+var x = 0
+var y = 0
+var tempArr = []
 
-	for (let i = 0; i < arr.length; i++) {
-		const instruction = arr[i];
-		if (instruction === 'Forward') {
-			coords[0]++;
-		} else if (instruction === 'Back') {
-			coords[0]--;
-		} else if (instruction === 'Right') {
-			coords[1]++;
-		} else {
-			coords[1]--;
-		}
-		console.log(coords);
-	}
-	console.log('Конец' + '[' + coords + ']');
-}
+tempArr.push([x,y])
 
-move(instructions);
+instr.forEach(function (item) {
+    if (item === 'Forvard') {
+      x++
+      tempArr.push([x,y])
+    } else if (item === 'Back') {
+      x--
+      tempArr.push([x,y])
+    }
+    else if (item === 'Right') {
+      y++
+      tempArr.push([x,y])
+    } else if (item === 'Left') {
+      y--
+      tempArr.push([x,y])
+    }
+  console.log(tempArr);
+})
