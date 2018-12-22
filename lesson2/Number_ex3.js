@@ -1,13 +1,9 @@
 // #3 DISCOUNT PERCENTAGE
 function discount(price, constant) {
-	if (typeof price === 'number' && typeof constant === 'number') {
-		if (price >= constant) {
-			return price * .9;
-		} else {
-			return price * .75;
-		}
+	if (price >= constant) {
+		return price * .9;
 	} else {
-		return 'Not a number';
+		return price * .75;
 	}
 }
 var constant = 4;
