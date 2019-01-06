@@ -104,17 +104,18 @@ console.log(pizza3.getPrice('KingSize'));
   т.к. не нашел информации как создавать через конструкторы
   свойтсва со вложенными в них объектами (массивами)
 */
+function getPrice(pizzaSizeName) {
+  if (arguments.length === 0) {
+    return 'please enter your desired pizza size';
+  }
+  let sizes = this.size;
+  return sizes.find(elem => elem.name === pizzaSizeName).price;
+};
+
 function Pizza(obj) {
   this.name = obj.name;
   this.ingredients = obj.ingredients;
   this.size = obj.size;
-  this.getPrice = function(pizzaSizeName) {
-    if (arguments.length === 0) {
-      return 'please enter your desired pizza size';
-    }
-    let sizes = this.size;
-    return sizes.find(elem => elem.name === pizzaSizeName).price;
-  };
 }
 
 let pizzaOne = {
@@ -149,11 +150,11 @@ let pizzaTwo = {
 
 let pizza1 = new Pizza(pizzaOne);
 console.log(pizza1);
-console.log(pizza1.getPrice('KingSize'));
+console.log(getPrice.call(pizza1, 'KingSize'));
 
 let anotherPizza = new Pizza(pizzaTwo);
 console.log(anotherPizza);
-console.log(anotherPizza.getPrice('Medium'));
+console.log(getPrice.call(anotherPizza, 'Medium'));
 
 /// /////-------------------------------------------/////////
 // 1.5 using using ES6 class syntax
@@ -162,20 +163,13 @@ class PizzaClass {
     this.name = obj.name;
     this.ingredients = obj.ingredients;
     this.size = obj.size;
-    this.getPrice = function(pizzaSizeName) {
-      if (arguments.length === 0) {
-        return 'please enter your desired pizza size';
-      }
-      let sizes = this.size;
-      return sizes.find(elem => elem.name === pizzaSizeName).price;
-    };
   }
 }
 
 let pizza4 = new PizzaClass(pizzaOne);
 console.log(pizza4);
-console.log(pizza4.getPrice('KingSize'));
+console.log(getPrice.call(pizza4, 'KingSize'));
 
 let anotherPizza2 = new PizzaClass(pizzaTwo);
 console.log(anotherPizza2);
-console.log(anotherPizza2.getPrice('Medium'));
+console.log(getPrice.call(anotherPizza2, 'Medium'));
