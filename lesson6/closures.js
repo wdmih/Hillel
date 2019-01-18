@@ -4,21 +4,21 @@
 // добавить метод showResult (=)
 
 function createCalc() {
-  let result = 5;
+  let result = 0;
   return {
-    add: function(a, b) {
-      result = a + b;
+    add: function(num) {
+      result += num;
     },
-    subtract: function(a, b) {
-      result = a - b;
+    subtract: function(num) {
+      result -= num;
     },
-    multiply: function(a, b) {
-      result = a * b;
+    multiply: function(num) {
+      result *= num;
     },
-    divide: function(a, b) {
-      result = a / b;
+    divide: function(num) {
+      result /= num;
     },
-    clear: function(a, b) {
+    clear: function() {
       result = 0;
     },
     showResult: function() {
@@ -28,13 +28,13 @@ function createCalc() {
 }
 
 let calculator = createCalc();
-calculator.add(5, 1);
+calculator.add(8);
 console.log(calculator.showResult());
-calculator.subtract(5, 1);
+calculator.subtract(3);
 console.log(calculator.showResult());
-calculator.multiply(5, 5);
+calculator.multiply(2);
 console.log(calculator.showResult());
-calculator.divide(10, 3);
+calculator.divide(8);
 console.log(calculator.showResult());
 calculator.clear();
 console.log(calculator.showResult());
