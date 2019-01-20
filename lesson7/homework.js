@@ -66,7 +66,7 @@ let clonedSampleArr = copyArr(sampleArr2);
 console.log(clonedSampleArr === sampleArr2);
 
 // #################################################
-// #3 - DELETE MINIMAL
+// #3 - DELETE MINIMAL - filter method way
 // #################################################
 
 const sampleArr3 = [1, 2, 5, 78, 65, 1, 7];
@@ -77,6 +77,20 @@ function deleteMin(arr) {
 
 let filteredArr = deleteMin(sampleArr3);
 console.log(filteredArr);
+
+// #################################################
+// #3 - DELETE MINIMAL - splice method way
+// #################################################
+
+const sampleArr3s = [1, 2, 5, 78, 65, 1, 7];
+function deleteMinS(arr) {
+  let min = Math.min(...arr);
+  arr.forEach((v, k, arr) => v !== min || arr.splice(k, 1));
+  return arr;
+}
+
+let filteredArrS = deleteMinS(sampleArr3s);
+console.log(filteredArrS);
 
 // #################################################
 // #4 SORTING ARRAY OF STRINS WITH DIRECTION
