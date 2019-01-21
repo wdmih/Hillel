@@ -23,7 +23,8 @@ const lib = (function() {
       arr.forEach((v, k, arr) => v !== min || arr.splice(k, 1));
       return arr;
     },
-    sortArr: function sortArr(arr, dir) { // dir = true - low to high, false - high to low
+    sortArr: function sortArr(arr, dir) {
+      let newArr = arr.splice(0); // dir = true - low to high, false - high to low
       function lowToHigh(a, b) {
         if (a.length > b.length) {
           return 1;
@@ -43,10 +44,15 @@ const lib = (function() {
         }
       }
       if (dir) {
-        return arr.sort(lowToHigh);
+        return newArr.sort(lowToHigh);
       } else {
-        return arr.sort(highToLow);
+        return newArr.sort(highToLow);
       }
     }
   };
 })();
+
+const source = ['333', '22', '1', '4444'];
+document.getElementById('source').innerHTML = source;
+let result = lib.sortArr(source, true);
+document.getElementById('result').innerHTML = result;
