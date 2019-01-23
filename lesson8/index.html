@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:400,700&amp;subset=cyrillic" rel="stylesheet">
+  <title>Document</title>
+  <style>
+    html, input {
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+    }
+    body, p {
+      margin: 0;
+      padding: 0;
+    }
+    .centered {
+      margin: 0 auto;
+      width: 600px;
+    }
+    .mb {
+      margin-bottom: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="centered">
+    <h2>Сортировка массива по колличеству букв в слове</h2>
+    <div class="mb">
+      <span>Исходный массив строк:</span>
+      <span id="sourceArr"></span>
+    </div>
+    <div class="mb">
+      <span>Cортировать по символу:</span>
+      <input type="text" id="inputChar">
+      <input type="button" value="SORT">
+    </div>
+    <div class="mb">
+      <span>Результат:</span>
+      <span id="resultArr">please enter a value</span>
+    </div>
+  </section>
+  <script src="./homework.js"></script>
+</body>
+
+</html>
