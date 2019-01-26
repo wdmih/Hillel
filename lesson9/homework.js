@@ -27,8 +27,13 @@ const cocktailsMethods = {
     return this.list.push(new Cocktail(newCocktailObj));
   },
   removeCocktail: function(cocktailName) {
-    this.list.forEach((elem, key, arr) => elem.name !== cocktailName || arr.splice(key, 1));
-    return this.list;
+    let removed;
+    this.list.forEach((elem, key, arr) => {
+      if (elem.name === cocktailName) {
+        removed = arr.splice(key, 1);
+      }
+    });
+    return removed;
   },
   showAll: function() {
     return this.list.map(item => item.name);
@@ -110,7 +115,8 @@ cocktails.addCocktail({
 
 console.log(cocktails.showAll());
 
-cocktails.removeCocktail('Candy Corn');
+cocktails.removeCocktail('Black Rose');
+console.log(cocktails.removeCocktail('Candy Corn'));
 
 console.log(cocktails.showAll());
 console.log(cocktails.showAlcohol());
