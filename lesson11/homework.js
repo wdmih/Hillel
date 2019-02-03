@@ -34,11 +34,7 @@ class CocktailList {
     return this.render(list);
   }
   /// ////////////////// HOMEWORK ///////////////////////////
-  renderWithParams() {
-    let params = {
-      isAlcohol: filterParams[0].checked,
-      type: filterParams[1].checked ? 'long' : 'shot'
-    };
+  renderWithParams(params) {
     let list = this.list.filter(function(obj) {
       return Object.keys(params).every(function(key) {
         return obj[key] === params[key];
@@ -80,8 +76,12 @@ filterInput.addEventListener('input', function(event) {
 /// ////////////////// HOMEWORK ///////////////////////////
 filterParams.forEach(function(filterPar) {
   filterPar.addEventListener('change', function(event) {
+    let params = {
+      isAlcohol: filterParams[0].checked,
+      type: filterParams[1].checked ? 'long' : 'shot'
+    };
     listElement.innerHTML = '';
-    listElement.appendChild(list.renderWithParams());
+    listElement.appendChild(list.renderWithParams(params));
   });
 });
 /// ////////////////// HOMEWORK end ///////////////////////////
