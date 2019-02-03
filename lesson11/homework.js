@@ -1,7 +1,8 @@
 const showButton = document.getElementById('show-button');
 const filterInput = document.getElementById('filter-cocktails');
 const listElement = document.getElementById('cocktail-list');
-const filterParams = document.querySelectorAll('.filter-params');
+const filterAlcohol = document.getElementById('filter-alcohol');
+const filterType = document.getElementById('filter-type');
 
 class Cocktail {
   constructor(name, ingredients, isAlcohol, type) {
@@ -74,14 +75,15 @@ filterInput.addEventListener('input', function(event) {
 });
 
 /// ////////////////// HOMEWORK ///////////////////////////
-filterParams.forEach(function(filterPar) {
-  filterPar.addEventListener('change', function(event) {
-    let params = {
-      isAlcohol: filterParams[0].checked,
-      type: filterParams[1].checked ? 'long' : 'shot'
-    };
-    listElement.innerHTML = '';
-    listElement.appendChild(list.renderWithParams(params));
-  });
-});
+
+function filterHandler() {
+  let params = {
+    isAlcohol: filterAlcohol.checked,
+    type: filterType.checked ? 'long' : 'shot'
+  };
+  listElement.innerHTML = '';
+  listElement.appendChild(list.renderWithParams(params));
+}
+filterAlcohol.addEventListener('change', filterHandler);
+filterType.addEventListener('change', filterHandler);
 /// ////////////////// HOMEWORK end ///////////////////////////
