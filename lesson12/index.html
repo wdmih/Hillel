@@ -7,9 +7,88 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-  <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-  <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
   <style>
+    html {
+      font-family: 'Roboto', 'helvetica', sans-serif;
+      font-size: 16px;
+    }
+    html,body {
+      margin: 0;
+      padding: 0;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    input, button {
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+    }
+    input[type="text"] {
+      padding: 8px 10px;
+      border: 1px solid rgb(48, 48, 48);
+      border-radius: 5px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+    }
+    .column {
+      flex-basis: calc(50% - 50px);
+    }
+    .filter-items-container {
+      display: flex;
+    }
+    .filter-item {
+      display: flex;
+      align-items: start;
+    }
+    .filter-item:not(:first-child) {
+      margin-left: 20px;
+    }
+    .content-item--title {
+      display: flex;
+    }
+    .content-item--title h4 {
+      flex-basis: 30%;
+    }
+    .content-item {
+      display: flex;
+      align-items: center;
+    }
+    .content-item h4 {
+      flex-basis: 30%;
+    }
+    .content-item p {
+      flex-basis: 30%;
+    }
+    .content-item button {
+      border: none;
+      background: rgb(60, 130, 187);
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 700;
+      border-radius: 5px;
+      padding: 10px 25px;
+      transition: .3s ease;
+    }
+    .content-item button:hover {
+      background: rgb(34, 96, 146);
+    }
+    .order-content-item {
+      display: flex;
+    }
+    .order-content-item h4 {
+      flex-basis: 25%;
+    }
     .bold {
       font-weight: 700;
     }
@@ -18,77 +97,66 @@
 
 <body>
   <div class="container">
-    <div class="row">
-      <div class="column column-40">
-        <h2>Cocktails</h2>
-        <h4>Filters:</h4>
-        <div class="row">
-          <div class="column column-100">
-            <label for="filter-coctails">Filter by name</label>
-            <input placeholder="type any char" type="text" id="filter-coctails" name="cocktailValue" />
-          </div>
-        </div>
-        <div class="row">
-          <div class="column column-25">
-            <label for="is-alcohol">Alcohol</label>
-            <input type="checkbox" name="isAlcohol" id="is-alcohol" />
-          </div>
-          <div class="column column-25">
-            <label for="is-non-alcohol">Non Alcohol</label>
-            <input type="checkbox" name="isAlcohol" id="is-non-alcohol" />
-          </div>
-          <div class="column column-25">
-              <label for="is-long">Long</label>
-              <input type="checkbox" name="long" id="is-long" />
+      <div class="column">
+          <h2>Cocktails</h2>
+          <h3>Filters:</h4>
+          <div class="filters-container">
+            <div class="filter-item--long">
+                <label for="filter-coctails">Filter by name</label>
+                <input placeholder="type any char" type="text" id="filter-coctails" name="cocktailValue" />
             </div>
-            <div class="column column-25">
-              <label for="is-shot">Shot</label>
-              <input type="checkbox" name="shot" id="is-shot" />
+            <ul class="filter-items-container">
+              <li class="filter-item">
+                  <label for="is-alcohol">Alcohol</label>
+                  <input type="checkbox" name="isAlcohol" id="is-alcohol" />
+              </li>
+              <li class="filter-item">
+                  <label for="is-non-alcohol">Non Alcohol</label>
+                  <input type="checkbox" name="isAlcohol" id="is-non-alcohol" />
+              </li>
+              <li class="filter-item">
+                  <label for="is-long">Long</label>
+                  <input type="checkbox" name="long" id="is-long" />
+              </li>
+              <li class="filter-item">
+                  <label for="is-shot">Shot</label>
+                  <input type="checkbox" name="shot" id="is-shot" />
+              </li>
+            </ul>
+          </div>
+          <div class="content">
+            <div class="content-item--title">
+              <h4>Cocktail Name</h4>
+              <h4>Price</h4>
             </div>
+            <div class="content-item">
+              <h4>Margarita</h4>
+              <p>102</p>
+              <button type="button">Buy</button>
+            </div>
+          </div>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th colspan="2">Cocktail name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Margarita</td>
-              <td>
-                <div class="float-right"><button class="button">buy</button></div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="column column-50 column-offset-10">
-        <h2>Order</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Cocktail name</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Summ</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Margarita</td>
-              <td>2</td>
-              <td>58$</td>
-              <td>116$</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="float-right">
-          <p>Total: <span class="bold">555$</span></p>
+        <div class="column">
+          <h2>My Order</h2>
+          <div class="order-content">
+            <div class="order-content-item order-content-item--title">
+              <h4>Cocktail Name</h4>
+              <h4>Quantity</h4>
+              <h4>Price</h4>
+              <h4>Summ</h4>
+            </div>
+            <div class="order-content-item">
+              <h4>Margarita</h4>
+              <h4>2</h4>
+              <h4>58$</h4>
+              <h4>116$</h4>
+            </div>
+            <div class="order-footer">
+              <p>Total: <span class="bold">555$</span></p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
   </div>
-
 
   <script src="homework.js"></script>
 </body>
