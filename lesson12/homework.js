@@ -50,7 +50,9 @@ class CocktailsList {
         //      && (this.filters.cocktailValue === '' || item.name.indexOf(this.filters.cocktailValue) === 0 )
         // });
         this.filteredList = this.list.filter(item => {
-          return this.filters.cocktailValue === '' || item.name.indexOf(this.filters.cocktailValue) === 0
+          return (this.filters.isAlcohol ? item.isAlcohol === true : true)
+          && (this.filters.isNonAlcohol ? item.isAlcohol === false : true)
+          && (this.filters.cocktailValue === '' || item.name.indexOf(this.filters.cocktailValue) === 0)
         });
     }
 
