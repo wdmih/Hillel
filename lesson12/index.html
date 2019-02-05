@@ -34,6 +34,9 @@
       display: block;
       margin-bottom: 5px;
     }
+    h2, h3 {
+      padding: 0 20px;
+    }
     .container {
       width: 100%;
       max-width: 1200px;
@@ -43,6 +46,12 @@
     }
     .column {
       flex-basis: calc(50% - 50px);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0px 2px 20px -5px rgba(0,0,0,0.25);
+    }
+    .filters-container {
+      padding: 0 20px;
     }
     .filter-items-container {
       display: flex;
@@ -56,13 +65,20 @@
     }
     .content-item--title {
       display: flex;
+      padding: 0 20px;
+      background: #eee;
     }
     .content-item--title h4 {
-      flex-basis: 30%;
+      flex-basis: 41%;
     }
     .content-item {
       display: flex;
+      padding: 0 20px;
       align-items: center;
+      justify-content: space-between;
+    }
+    .content-item:nth-child(even) {
+      background: #f5f6f8;
     }
     .content-item h4 {
       flex-basis: 30%;
@@ -73,7 +89,7 @@
     }
     .content-item button {
       border: none;
-      background: rgb(60, 130, 187);
+      background: rgb(17, 199, 108);
       color: #fff;
       text-transform: uppercase;
       font-weight: 700;
@@ -82,13 +98,30 @@
       transition: .3s ease;
     }
     .content-item button:hover {
-      background: rgb(34, 96, 146);
+      background: rgb(18, 145, 81);
     }
     .order-content-item {
       display: flex;
+      padding: 0 20px;
+    }
+    .order-content-item:nth-child(even) {
+      background: #f5f6f8;
+    }
+    .order-content-item--title {
+      background: #eee;
+      padding: 0 20px;
     }
     .order-content-item h4 {
+      text-transform: capitalize;
       flex-basis: 25%;
+    }
+    .order-content-item span {
+      text-transform: capitalize;
+      flex-basis: 25%;
+      align-self: center;
+    }
+    .order-footer {
+      padding: 0 20px;
     }
     .bold {
       font-weight: 700;
@@ -144,14 +177,11 @@
               <h4>Price</h4>
               <h4>Summ</h4>
             </div>
-            <div class="order-content-item">
-              <h4>Margarita</h4>
-              <h4>2</h4>
-              <h4>58$</h4>
-              <h4>116$</h4>
+            <div id="order-list">
+
             </div>
             <div class="order-footer">
-              <p>Total: <span class="bold">555$</span></p>
+              <p>Total: <span id="total-order-price" class="bold"></span></p>
             </div>
           </div>
         </div>
