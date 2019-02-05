@@ -50,15 +50,11 @@ class CocktailsList {
   }
 
   applyFilters() {
-    // this.filteredList = this.list.filter(item => {
-    //     return item.isAlcohol === this.filters.isAlcohol
-    //      && (item.type === 'long' && this.filters.isLong || item.type === 'shot' && !this.filters.isLong  )
-    //      && (this.filters.cocktailValue === '' || item.name.indexOf(this.filters.cocktailValue) === 0 )
-    // });
     this.filteredList = this.list.filter(item => {
-      return (this.filters.isAlcohol ? item.isAlcohol === true : true) &&
-          (this.filters.isNonAlcohol ? item.isAlcohol === false : true) &&
-          (this.filters.cocktailValue === '' || item.name.indexOf(this.filters.cocktailValue) === 0);
+      return (item.isAlcohol === this.filters.isAlcohol || !this.filters.isAlcohol) &&
+            (item.isAlcohol !== this.filters.isNonAlcohol || this.filters.isNonAlcohol);
+      //  && (item.type === 'long' && this.filters.isLong || item.type === 'shot' && !this.filters.isLong  )
+      //  && (this.filters.cocktailValue === '' || item.name.indexOf(this.filters.cocktailValue) === 0 )
     });
   }
 
@@ -97,7 +93,7 @@ class OrderList {
   add(orderItem) {
     if (!this.orderList.includes(orderItem)) {
       orderItem.quantity = 1;
-      this.orderList.push(orderItem);
+      this.orderList.unshift(orderItem);
     } else {
       let itemIndex = this.orderList.findIndex(item => item === orderItem);
       this.orderList[itemIndex].quantity++;
