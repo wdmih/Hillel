@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <style>
+    .settings {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div id="buttons">
+    <button class="button" id="show-button" type="button">Render</button>
+  </div>
+  <div class="content">
+    <div class="settings"><input type="text" id="filter-cocktails"></div>
+    <div id="filters" class="settings">
+      <label for="filter-alcohol"><input type="checkbox" class="filter-params" name="isAlcohol" id="filter-alcohol">Alcohol/Non Alcohol</label>
+      <label for="filter-type"><input type="checkbox" class="filter-params" name="isLong" id="filter-type">Long/Shot</label>
+    </div>
+    <div id="cocktail-list"></div>
+  </div>
+  <script src="./l12.js"></script>
+</body>
+</html>

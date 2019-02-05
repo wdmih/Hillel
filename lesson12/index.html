@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <style>
+    .bold {
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="column column-40">
+        <h2>Cocktails</h2>
+        <h4>Filters:</h4>
+        <div class="row">
+          <div class="column column-100">
+            <label for="filter-coctails">Filter by name</label>
+            <input placeholder="type any char" type="text" id="filter-coctails" name="cocktailValue" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="column column-25">
+            <label for="is-alcohol">Alcohol</label>
+            <input type="checkbox" name="isAlcohol" id="is-alcohol" />
+          </div>
+          <div class="column column-25">
+            <label for="is-non-alcohol">Non Alcohol</label>
+            <input type="checkbox" name="isAlcohol" id="is-non-alcohol" />
+          </div>
+          <div class="column column-25">
+              <label for="is-long">Long</label>
+              <input type="checkbox" name="long" id="is-long" />
+            </div>
+            <div class="column column-25">
+              <label for="is-shot">Shot</label>
+              <input type="checkbox" name="shot" id="is-shot" />
+            </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th colspan="2">Cocktail name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Margarita</td>
+              <td>
+                <div class="float-right"><button class="button">buy</button></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="column column-50 column-offset-10">
+        <h2>Order</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Cocktail name</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Summ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Margarita</td>
+              <td>2</td>
+              <td>58$</td>
+              <td>116$</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="float-right">
+          <p>Total: <span class="bold">555$</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="homework.js"></script>
+</body>
+
+
+</html>
