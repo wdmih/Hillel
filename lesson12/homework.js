@@ -51,8 +51,8 @@ class CocktailsList {
 
   applyFilters() {
     this.filteredList = this.list.filter(item => {
-      return (item.isAlcohol === this.filters.isAlcohol || !this.filters.isAlcohol) &&
-            (item.isAlcohol !== this.filters.isNonAlcohol || this.filters.isNonAlcohol);
+      return (item.isAlcohol === this.filters.isAlcohol || !this.filters.isAlcohol === false) &&
+            (item.isAlcohol !== this.filters.isNonAlcohol || this.filters.isNonAlcohol === true);
       //  && (item.type === 'long' && this.filters.isLong || item.type === 'shot' && !this.filters.isLong  )
       //  && (this.filters.cocktailValue === '' || item.name.indexOf(this.filters.cocktailValue) === 0 )
     });
