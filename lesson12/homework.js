@@ -13,7 +13,7 @@ class Cocktail {
     this.type = type;
   }
   getPrice() { // methods of prototype
-    return this.ingredients.reduce(function(sum, ingredient) {
+    return this.ingredients.reduce(function (sum, ingredient) {
       return sum + ingredient.price;
     }, 0);
   }
@@ -25,10 +25,8 @@ class CocktailsList {
     this.filteredList = []; // view model
 
     this.filters = { // view model
-      isAlcohol: false,
-      isNonAlcohol: false,
-      isLong: false,
-      isShot: false,
+      isAlcohol: true,
+      isLong: true,
       cocktailValue: ''
     };
   }
@@ -51,10 +49,9 @@ class CocktailsList {
 
   applyFilters() {
     this.filteredList = this.list.filter(item => {
-      return (item.isAlcohol === this.filters.isAlcohol || !this.filters.isAlcohol === false) &&
-            (item.isAlcohol !== this.filters.isNonAlcohol || this.filters.isNonAlcohol === true);
-      //  && (item.type === 'long' && this.filters.isLong || item.type === 'shot' && !this.filters.isLong  )
-      //  && (this.filters.cocktailValue === '' || item.name.indexOf(this.filters.cocktailValue) === 0 )
+      return item.isAlcohol === this.filters.isAlcohol &&
+        (item.type === 'long' && this.filters.isLong || item.type === 'shot' && !this.filters.isLong) &&
+        (this.filters.cocktailValue === '' || item.name.indexOf(this.filters.cocktailValue) === 0)
     });
   }
 
@@ -62,7 +59,7 @@ class CocktailsList {
     this.applyFilters();
     let fragment = document.createDocumentFragment();
 
-    this.filteredList.forEach(function(item) {
+    this.filteredList.forEach(function (item) {
       let cocktailItem = document.createElement('div');
       cocktailItem.className = 'content-item';
 
@@ -100,14 +97,14 @@ class OrderList {
     }
   }
   getTotalOrderPrice() {
-    return this.orderList.reduce(function(prev, curr) {
+    return this.orderList.reduce(function (prev, curr) {
       return prev + (curr.getPrice() * curr.quantity);
     }, 0);
   }
   render() {
     let fragment = document.createDocumentFragment();
 
-    this.orderList.forEach(function(item) {
+    this.orderList.forEach(function (item) {
       let orderItem = document.createElement('div');
       orderItem.className = 'order-content-item';
 
@@ -134,18 +131,36 @@ class OrderList {
 }
 
 let list = new CocktailsList();
-list.add(new Cocktail('margarita', [{ name: 'tequila', price: 52 }, { name: 'lime', price: 12 }], true, 'long'));
-list.add(new Cocktail('old fashioned', [{ name: 'wiskey', price: 74 }, { name: 'bitter', price: 31 }], true, 'shot'));
-list.add(new Cocktail('negroni', [{ name: 'wiskey', price: 69 }, { name: 'bitter', price: 28 }], true, 'long'));
-list.add(new Cocktail('mojito', [{ name: 'wiskey', price: 38 }, { name: 'bitter', price: 18 }], false, 'long'));
+list.add(new Cocktail('margarita', [{
+  name: 'tequila',
+  price: 52
+}, {
+  name: 'lime',
+  price: 12
+}], true, 'long'));
+list.add(new Cocktail('old fashioned', [{
+  name: 'wiskey',
+  price: 74
+}, {
+  name: 'bitter',
+  price: 31
+}], true, 'shot'));
+list.add(new Cocktail('negroni', [{
+  name: 'wiskey',
+  price: 69
+}, {
+  name: 'bitter',
+  price: 28
+}], false, 'long'));
+list.add(new Cocktail('mojito', [{
+  name: 'wiskey',
+  price: 38
+}, {
+  name: 'bitter',
+  price: 18
+}], false, 'shot'));
 
 let order = new OrderList();
-
-// const showList = function () {
-//     listElement.innerHTML = '';
-//     listElement.appendChild(list.render())
-// }
-// showButton.addEventListener('click', showList);
 
 listElement.appendChild(list.render());
 orderElement.appendChild(order.render());
