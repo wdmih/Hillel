@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+      <div class="column">
+          <div class="column-header twoToneCenter">
+              <h2>Cocktails</h2>
+              <button class="button button--load">Load All</button>
+          </div>
+          <h3>Filters:</h4>
+          <div class="filters-container">
+            <div class="filter-item--long">
+                <label for="filter-coctails">Filter by name</label>
+                <input placeholder="type any char" type="text" id="filter-coctails" name="cocktailValue" />
+            </div>
+            <ul class="filter-items-container" id="filter-checks">
+              <li class="filter-item">
+                  <label for="is-alcohol">Alcohol</label>
+                  <input checked type="checkbox" name="isAlcohol" id="is-alcohol" />
+              </li>
+              <li class="filter-item">
+                  <label for="is-long">Long</label>
+                  <input checked type="checkbox" name="isLong" id="is-long" />
+              </li>
+            </ul>
+          </div>
+          <div class="content">
+            <div class="content-item--title">
+              <h4>Cocktail Name</h4>
+              <h4>Price</h4>
+            </div>
+            <div id="cocktail-list">
+
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <h2>My Order</h2>
+          <div class="order-content">
+            <div class="order-content-item order-content-item--title">
+              <h4>Cocktail Name</h4>
+              <h4>Quantity</h4>
+              <h4>Price</h4>
+              <h4>Summ</h4>
+            </div>
+            <div id="order-list">
+
+            </div>
+            <div class="order-footer">
+              <p>Total: <span id="total-order-price" class="bold"></span></p>
+            </div>
+          </div>
+        </div>
+  </div>
+
+  <script src="homework.js"></script>
+</body>
+
+
+</html>
