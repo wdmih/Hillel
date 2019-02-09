@@ -1,7 +1,7 @@
 {
   "cocktails": [{
       "name": "margarita",
-      "ingridients": [{
+      "ingredients": [{
           "name": "tequila",
           "price": 52
         },
@@ -15,7 +15,7 @@
     },
     {
       "name": "old fashioned",
-      "ingridients": [{
+      "ingredients": [{
           "name": "wiskey",
           "price": 74
         },
@@ -29,7 +29,7 @@
     },
     {
       "name": "negroni",
-      "ingridients": [{
+      "ingredients": [{
           "name": "wiskey",
           "price": 69
         },
@@ -43,7 +43,7 @@
     },
     {
       "name": "mojito",
-      "ingridients": [{
+      "ingredients": [{
           "name": "wiskey",
           "price": 38
         },
