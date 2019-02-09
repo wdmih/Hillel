@@ -1,0 +1,59 @@
+{
+  "cocktails": [{
+      "name": "margarita",
+      "ingridients": [{
+          "name": "tequila",
+          "price": 52
+        },
+        {
+          "name": "lime",
+          "price": 12
+        }
+      ],
+      "isAlcohol": true,
+      "type": "long"
+    },
+    {
+      "name": "old fashioned",
+      "ingridients": [{
+          "name": "wiskey",
+          "price": 74
+        },
+        {
+          "name": "bitter",
+          "price": 31
+        }
+      ],
+      "isAlcohol": true,
+      "type": "shot"
+    },
+    {
+      "name": "negroni",
+      "ingridients": [{
+          "name": "wiskey",
+          "price": 69
+        },
+        {
+          "name": "bitter",
+          "price": 28
+        }
+      ],
+      "isAlcohol": true,
+      "type": "long"
+    },
+    {
+      "name": "mojito",
+      "ingridients": [{
+          "name": "wiskey",
+          "price": 38
+        },
+        {
+          "name": "bitter",
+          "price": 18
+        }
+      ],
+      "isAlcohol": false,
+      "type": "long"
+    }
+  ]
+}
