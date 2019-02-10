@@ -264,6 +264,30 @@ function loadCocktailsXHR(url) {
     }
   });
 }
+/// V3 FETCH WAY
+function loadCocktailsFetch(url) {
+  return fetch(url, { method: 'GET' }).then(
+    function(response) {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' + response.status);
+        return;
+      }
+      response.json().then(function(cocktails) {
+        let now = Date.now();
+        if (list.loaded === false || (now - list.loaded) > 10000) {
+          cocktails.forEach(function(item) {
+            return list.add(new Cocktail(item));
+          });
+          list.loaded = Date.now();
+        } else {
+          alert('Data is already loaded');
+        }
+      });
+    }
+  ).catch(function(err) {
+    console.log('Fetch Error :-S', err);
+  });
+}
 
 function loadHandler() {
   buttonLoad.innerHTML = 'Loading';
@@ -285,4 +309,16 @@ function loadHandlerXHR() {
     });
 }
 
-buttonLoad.addEventListener('click', loadHandlerXHR); // OR buttonLoad.addEventListener('click', loadHandler);
+function loadHandlerFetch() {
+  buttonLoad.innerHTML = 'Loading';
+  buttonLoad.classList.add('spinning');
+  loadCocktailsFetch('https://my-json-server.typicode.com/wdmih/Hillel/cocktails')
+    .then(() => {
+      buttonLoad.classList.remove('spinning');
+      buttonLoad.innerHTML = 'Load All';
+    });
+}
+
+buttonLoad.addEventListener('click', loadHandlerFetch);
+// OR buttonLoad.addEventListener('click', loadHandler)
+// OR buttonLoad.addEventListener('click', loadHandlerXHR);
