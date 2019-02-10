@@ -30,21 +30,7 @@ class CocktailsList {
       isLong: true,
       cocktailValue: ''
     };
-  }
-  loadCocktails(method, url) {
-    return new Promise(function(resolve, reject) {
-      var xhr = new XMLHttpRequest();
-      xhr.open(method, url);
-      xhr.onload = function() {
-        if (this.status === 200) {
-          resolve(xhr.response);
-        } else {
-          reject(console.log(this.status, xhr.statusText)
-          );
-        }
-      };
-      xhr.send();
-    });
+    this.loaded = false;
   }
   setFilterValue(value, type) {
     this.filters[type] = value;
@@ -171,27 +157,132 @@ function buttonHandler(e) {
     totalOrderPrice.innerText = `${order.getTotalOrderPrice()}$`;
   }
 }
+
+listElement.addEventListener('click', buttonHandler);
+
+/// ///////////////////////////////////////////////////
+/// /////////////////// HOMEWORK //////////////////////
+/// ///////////////////////////////////////////////////
+
+/// V1 PROMISE.RESOLVE
+function loadCocktails() { // Promise.resolve
+  let delay = (time) => (result) => new Promise(resolve => setTimeout(() => resolve(result), time));
+  let cocktails = Promise.resolve([{
+    name: 'margarita',
+    ingredients: [{
+      name: 'tequila',
+      price: 52
+    },
+    {
+      name: 'lime',
+      price: 12
+    }
+    ],
+    isAlcohol: true,
+    type: 'long'
+  },
+  {
+    name: 'old fashioned',
+    ingredients: [{
+      name: 'wiskey',
+      price: 74
+    },
+    {
+      name: 'bitter',
+      price: 31
+    }
+    ],
+    isAlcohol: true,
+    type: 'shot'
+  },
+  {
+    name: 'negroni',
+    ingredients: [{
+      name: 'wiskey',
+      price: 69
+    },
+    {
+      name: 'bitter',
+      price: 28
+    }
+    ],
+    isAlcohol: true,
+    type: 'long'
+  },
+  {
+    name: 'mojito',
+    ingredients: [{
+      name: 'wiskey',
+      price: 38
+    },
+    {
+      name: 'bitter',
+      price: 18
+    }
+    ],
+    isAlcohol: false,
+    type: 'long'
+  }
+  ]);
+  return cocktails.then(delay(1000)).then(function(resolve) {
+    let now = Date.now();
+
+    if (list.loaded === false || (now - list.loaded) > 10000) {
+      resolve.forEach(function(item) {
+        return list.add(new Cocktail(item));
+      });
+      list.loaded = Date.now();
+    } else {
+      alert('Data is already loaded');
+    }
+  });
+}
+
+/// V2 PROMISE WITH XHR
+function loadCocktailsXHR(url) {
+  return new Promise(function(resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.onload = function() {
+      if (this.status === 200) {
+        resolve(xhr.response);
+      } else {
+        reject(console.log(this.status, xhr.statusText)
+        );
+      }
+    };
+    xhr.send();
+  }).then(function(cocktails) {
+    let now = Date.now();
+    if (list.loaded === false || (now - list.loaded) > 10000) {
+      JSON.parse(cocktails).forEach(function(item) {
+        return list.add(new Cocktail(item));
+      });
+      list.loaded = Date.now();
+    } else {
+      alert('Data is already loaded');
+    }
+  });
+}
+
 function loadHandler() {
   buttonLoad.innerHTML = 'Loading';
   buttonLoad.classList.add('spinning');
 
-  if (list.getAll().length === 0) {
-    list.loadCocktails('GET', 'https://my-json-server.typicode.com/wdmih/Hillel/cocktails')
-      .then(function(cocktails) {
-        JSON.parse(cocktails).forEach(function(item) {
-          return list.add(new Cocktail(item));
-        });
-      }).then(function() {
-        buttonLoad.classList.remove('spinning');
-        buttonLoad.innerHTML = 'Load All';
-      });
-  } else {
+  loadCocktails().then(() => {
     buttonLoad.classList.remove('spinning');
     buttonLoad.innerHTML = 'Load All';
-    alert('Data always loaded');
-  }
+  });
 }
 
-listElement.addEventListener('click', buttonHandler);
+function loadHandlerXHR() {
+  buttonLoad.innerHTML = 'Loading';
+  buttonLoad.classList.add('spinning');
+  loadCocktailsXHR('https://my-json-server.typicode.com/wdmih/Hillel/cocktails')
+    .then(() => {
+      buttonLoad.classList.remove('spinning');
+      buttonLoad.innerHTML = 'Load All';
+    });
+}
 
-buttonLoad.addEventListener('click', loadHandler);
+buttonLoad.addEventListener('click', loadHandlerXHR); // OR buttonLoad.addEventListener('click', loadHandler);
