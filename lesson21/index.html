@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+
+    .select {
+      transform: translateY(20vh);
+      width: 200px;
+      margin: 0 auto;
+    }
+    .select__selected {
+      padding: 10px 15px;
+      border: 1px solid #eee;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
+
+    .select__options.hidden{
+      display: none;
+    }
+
+    .select__options {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      background: #f4f5f8;
+      border-radius: 5px;
+    }
+    .select__options li {
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    .select__options li:hover {
+      background: #eee;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="select" id="select">
+    <div class="select__selected" id="s_act"></div>
+    <ul class="select__options hidden" id="s_opt">
+      <li>option-1</li>
+      <li>option-2</li>
+      <li>option-3</li>
+      <li>option-4</li>
+    </ul>
+  </div>
+
+  <script>
+    const select = document.getElementById('select')
+    const selected = document.getElementById('s_act')
+    const options = document.getElementById('s_opt')
+
+    selected.innerHTML = options.children[0].innerHTML // default option
+
+    selected.addEventListener('click', e => {
+      if (options.classList.contains('hidden')) {
+        options.classList.remove('hidden')
+      } else {
+        options.classList.add('hidden')
+      }
+    })
+
+    options.addEventListener('click', e => {
+      let target = e.target;
+      selected.innerHTML = target.innerHTML
+      options.classList.add('hidden')
+    })
+
+  </script>
+</body>
+</html>
